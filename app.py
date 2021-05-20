@@ -83,7 +83,15 @@ def login():
 @app.route('/signin/logout')
 def logout():
 	session.pop('user', None)
-	return render_template('login_.html')
+	return render_template('login_1.html')
+    
+    
+@app.route('/logout')
+def logout1():
+	session.pop('user', None)
+	return render_template('login_1.html')
+    
+    
 @app.route('/s')
 def student():
     if 'user' in session:  
@@ -148,7 +156,7 @@ def predict1():
         pred = "You don't have Heart Disease."
     output = pred
    
-    return render_template('heart_pred.html', pred= '{}'.format(output))
+    return render_template('indexheart.html', pred= '{}'.format(output))
     
     
     

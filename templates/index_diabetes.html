@@ -3,16 +3,42 @@
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
+
+<h2>What is Diabetes?</h2>
+<p>Diabetes is a disease that occurs when your blood glucose, also called blood sugar, is too high. 
+Blood glucose is your main source of energy and comes from the food you eat. 
+Insulin, a hormone made by the pancreas, helps glucose from food get into your cells to be used for energy. 
+Sometimes your body doesn’t make enough—or any—insulin or doesn’t use insulin well. 
+Glucose then stays in your blood and doesn’t reach your cells.</p>
+
+<img src="/static/diabetes_1.jpg", width= "600px", length=" 800px">
+
+<h2>What health problems can people with diabetes develop?</h2>
+<p>Over time, high blood glucose leads to problems such as<br>
+<li>heart disease</li>
+<li>stroke</li>
+<li>kidney disease</li>
+<li>eye problems</li>
+<li>dental disease</li>
+<li>nerve damage</li>
+<li>foot problems</li></p>
+
+
+
+
+
  <div class="login">
 	<h1>Diabetes Predictor</h1>
 
      
     <form action="{{ url_for('predict2')}}"method="post">
         <input type="text" name="Glucose Level" placeholder="Glucose Level" required="required" />
+		<br>
     	<input type="text" name="Insulin" placeholder="Insulin" required="required" />
-        <input type="text" name="BMI" placeholder="BMI" required="required" />
+		<br>
+        <input type="text" name="BMI" placeholder="BMI" required="required" /><br>
         <input type="text" name="Age" placeholder="Age" required="required" />
-		
+		<br>
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
