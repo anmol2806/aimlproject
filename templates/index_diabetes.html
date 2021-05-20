@@ -3,6 +3,18 @@
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
+<style>
+div.ex3 {
+	background-image:url("{{ url_for('static', filename='background_3.jpg') }}");
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
+
+<div class="ex3">
+
+
 
 <h2>What is Diabetes?</h2>
 <p>Diabetes is a disease that occurs when your blood glucose, also called blood sugar, is too high. 
