@@ -3,6 +3,19 @@
 {% block title %}Heart Disease{% endblock %}
 
 {% block content %}
+
+<style>
+div.ex3 {
+  background-image: url('background_2.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
+
+<div class="ex3";>
+
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -229,5 +242,5 @@ Serum cholesterol levels also show the amount of triglycerides present. Triglyce
        </div>
      <br><h2> {{pred}}</h2><br> 
 	 
-
+</div>
 {% endblock %}
