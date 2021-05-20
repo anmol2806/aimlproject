@@ -8,9 +8,16 @@ div.ex2 {
   
   padding: 25px;
   
-}</style>
+}
+div.ex3 {
+	background-image:url("{{ url_for('static', filename='background_1.jpg') }}");
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
 
-<div style="background-image: url('background_1.jpg');">
+<div class="ex3">
 
 <div class="ex2" style="font-size:20px";>
 <p style="font-size:40px"><b>What Is Body Mass Index?</b></p>

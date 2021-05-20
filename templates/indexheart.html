@@ -6,14 +6,14 @@
 
 <style>
 div.ex3 {
-  background-image: url('background_2.jpg');
-  background-repeat: no-repeat;
+	background-image:url("{{ url_for('static', filename='background_2.jpg') }}");
+    background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
 }
 </style>
 
-<div class="ex3";>
+<div class="ex3">
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
