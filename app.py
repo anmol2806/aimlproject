@@ -4,7 +4,8 @@ import sqlite3 as sql
 from flask_cors import CORS, cross_origin
 import pickle
 import numpy as np
-
+import os
+import pandas as pd
 #from sklearn.externals import joblib
 #import sklearn.external.joblib as extjoblib
 import joblib
@@ -136,6 +137,10 @@ def mainhome():
 def contact():
     return render_template("contact_us.html")
     
+    
+    
+    
+    
 @app.route('/heart')
 def home1():
     return render_template("indexheart.html")
@@ -157,7 +162,16 @@ def predict1():
     output = pred
    
     return render_template('indexheart.html', pred= '{}'.format(output))
-    
+
+@app.route('/heartdata')
+def data():
+	df=pd.read_csv("https://raw.githubusercontent.com/anmol2806/Python_practice1/main/Csv%20files/heart.csv")
+	data_table=df.to_html()
+	filepath = os.path.join('/Users/hp/Documents/Github/aimlproject/templates', 'heartdata.html')
+	text_file = open(filepath, "w")
+	text_file.write(data_table)
+	text_file.close()
+	return render_template("heartdata.html")  
     
     
     
