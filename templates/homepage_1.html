@@ -3,8 +3,16 @@
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
-	
+	<style>
 
+div.ex4 {
+	background-image:url("{{ url_for('static', filename='background_7.jpg') }}");
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
+<div class="ex4">
                         <h3>About Us</h3>
                     This is a health care application developed to predict heart disease, diabetes and bmi of a person.
 					It is an application made by using Python, Flask, HTML, CSS and Machine Learning
@@ -13,5 +21,7 @@
                         <h3>Welcome To
                             <span>Modern Clinic.</span></h3>
                         <p>Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veni.</p>
-                        
+  
+
+</div>  
 {% endblock %}

@@ -5,9 +5,8 @@ Contact Us
 {% endblock %}
 
 {% block content %}
-<div class="ex2";>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
-	<h1 >TEAM</h1> 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 	<style> 
 	.fa {  
   padding: 20px;  
@@ -74,13 +73,23 @@ text-align: center;
   padding: 25px;
   
 }
+div.ex4 {
+	background-image:url("{{ url_for('static', filename='background_8.jpg') }}");
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
 			
     </style> 
   
+<div class="ex2 ex";>
+ 
+	<h1 >TEAM</h1> 
+
   
     <div id = "leftbox" >
             <h2 style="color: black ;">Anmol Nagpal </h2>
-           	<img src="/static/anmol_pic2.jpg", width= "200px", length=" 400px">
+           	<img src="/static/anmol_pic2.jpg", width= "200px", length=" 400px"></img>
             <p >Python Developer</p>
             <li> <a href="https://www.linkedin.com/in/anmolnagpal28/" class="fa fa-linkedin"></a></li>
 			<li> <a href="https://www.facebook.com/anmol.nagpal.5494/" class="fa fa-facebook"> </a>  </li>  
@@ -93,7 +102,7 @@ text-align: center;
 	<div id = "rightbox">
 
 			<h2 style="color: black ;">Jagisha Luther </h2>
-            <img src="https://t4.ftcdn.net/jpg/03/32/59/65/360_F_332596535_lAdLhf6KzbW6PWXBWeIFTovTii1drkbT.jpg", width= "200px", length=" 400px">
+            <img src="https://t4.ftcdn.net/jpg/03/32/59/65/360_F_332596535_lAdLhf6KzbW6PWXBWeIFTovTii1drkbT.jpg", width= "200px", length=" 400px"> </img>
             <p  >Python Developer</p>
           
             <li> <a href="https://www.linkedin.com/in/jagisha-luther-44285718a/" class="fa fa-linkedin"></a></li>
