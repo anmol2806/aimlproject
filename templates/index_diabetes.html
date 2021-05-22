@@ -26,6 +26,43 @@ div.ex11 {
 }
 #responsive-image1 {  width: 80%;  height: auto; } 
 #responsive-image {  width: 100%;  max-height:200px; height:auto}
+
+
+
+
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+tbody tr:nth-child(even)
+{
+  background: #8cff66;
+}
+tbody tr:nth-child(odd)
+{
+  background:#339966;
+}
+
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+table, th, td {
+
+  border: 1px solid black;
+}
+
+
+
+
 </style>
 <div >
 <img src="/static/home_diabetes_2.jpg" id="responsive-image">
@@ -58,21 +95,31 @@ Glucose then stays in your blood and doesn’t reach your cells.</p>
 </div>
 </div>
 
+</div>
  <div class="login" >
 	<h1>Diabetes Predictor</h1>
 
      
     <form action="{{ url_for('predict2')}}"method="post">
-	<input type="text" name="Pregnancies" placeholder="Pregnancies" required="required" />
-	<input type="text" name="Glucose Level" placeholder="Glucose Level" required="required" />
+	<table class="table table-dark">
+		<tr><td> Pregnancies</td><td>	
+			<input type="text" name="Pregnancies" placeholder="Pregnancies" required="required" /></td></tr>
 	
-        <input type="text" name="BloodPressure" placeholder="BloodPressure" required="required" />
-		<br>
-    	<input type="text" name="Insulin" placeholder="Insulin" required="required" />
-		<br>
-        <input type="text" name="BMI" placeholder="BMI" required="required" /><br>
-        <input type="text" name="Age" placeholder="Age" required="required" />
-		<br>
+		<tr><td> Glucose Level</td><td>
+			<input type="text" name="Glucose Level" placeholder="Glucose Level" required="required" /></td></tr>
+		
+		<tr><td> BloodPressure</td><td>
+			<input type="text" name="BloodPressure" placeholder="BloodPressure" required="required" /></td></tr>
+		
+		<tr><td> Insulin</td><td>
+			<input type="text" name="Insulin" placeholder="Insulin" required="required" /></td></tr>
+		
+        <tr><td> BMI</td><td>
+			<input type="text" name="BMI" placeholder="BMI" required="required" /></td></tr>
+        
+		<tr><td> Age</td><td>
+			<input type="text" name="Age" placeholder="Age" required="required" /></td></tr>
+		</table>
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
@@ -84,7 +131,6 @@ Glucose then stays in your blood and doesn’t reach your cells.</p>
  
 </div>
 
-</div>
 
 {% endblock %}
 
