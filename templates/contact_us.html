@@ -56,21 +56,27 @@ text-align: center;
     opacity: 0.9;  
 }  
 		#leftbox {
-		padding: 20px; 
+		 
                 float:left; 
-                width:40%;
-               
+                width:50%;
+               background-image:url("{{ url_for('static', filename='background_8.jpg') }}");
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
             }
         #rightbox{
-		padding: 20px; 
+		padding: 2px; 
                 float:right;
-                width:40%;
-                
+                width:50%;
+                background-image:url("{{ url_for('static', filename='background_8.jpg') }}");
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
             }
 			
 			div.ex2 {
   
-  padding: 25px;
+  padding: 5px;
   
 }
 div.ex4 {
@@ -82,15 +88,15 @@ div.ex4 {
 			
     </style> 
   
-<div class="ex2 ex4";>
+<div class="ex2 ex4">
  
-	<h1 >TEAM</h1> 
+	<h1 style="color: white ;"><b>TEAM</b></h1> 
 
   
-    <div id = "leftbox" >
-            <h2 style="color: black ;">Anmol Nagpal </h2>
+    <div id = "leftbox"  >
+            <h2 style="color: white ;">Anmol Nagpal </h2>
            	<img src="/static/anmol_pic2.jpg", width= "200px", length=" 400px"></img>
-            <p >Python Developer</p>
+            <p style="color: white ;"><mark>Python Developer</mark></p>
             <li> <a href="https://www.linkedin.com/in/anmolnagpal28/" class="fa fa-linkedin"></a></li>
 			<li> <a href="https://www.facebook.com/anmol.nagpal.5494/" class="fa fa-facebook"> </a>  </li>  
 			<li> <a href="https://www.instagram.com/anmol28.an/" class="fa fa-instagram"> </a> </li>  
@@ -102,9 +108,9 @@ div.ex4 {
 	<div id = "rightbox">
 	
 
-			<h2 style="color: black ;">Jagisha Luther </h2>
+			<h2 style="color: white ;">Jagisha Luther </h2>
             <img src="https://t4.ftcdn.net/jpg/03/32/59/65/360_F_332596535_lAdLhf6KzbW6PWXBWeIFTovTii1drkbT.jpg", width= "200px", length=" 400px"> </img>
-            <p  >Python Developer</p>
+            <p style="color: white ;" ><mark>Python Developer</mark></p>
           
             <li> <a href="https://www.linkedin.com/in/jagisha-luther-44285718a/" class="fa fa-linkedin"></a></li>
 			<li> <a href="#" class="fa fa-facebook"> </a>  </li>  
