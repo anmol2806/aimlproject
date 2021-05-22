@@ -14,7 +14,7 @@ app = Flask(__name__)
 app.secret_key = "Secret Key"
 # load the saved model file and use for prediction
 logit_model = joblib.load('heart_disease.pkl')
-logit_model_diabetes = joblib.load('logit_diabetes_model.pkl')
+logit_model_diabetes = joblib.load('xgb_model_diabetes_model.pkl')
 logit_model_bmi=joblib.load(open('clf.pkl','rb'))
 
 
