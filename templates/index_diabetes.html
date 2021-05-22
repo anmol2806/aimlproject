@@ -1,21 +1,35 @@
 {% extends "base.html" %}
 
-{% block title %}Home Page{% endblock %}
+{% block title %} 
+Diabetes
+{% endblock %}
+
 
 {% block content %}
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
 <style>
-div.ex3 {
-	background-image:url("{{ url_for('static', filename='background_3.jpg') }}");
+div.ex11 {
+	background-image:url("{{ url_for('static', filename='diabetes_2.jpg') }}");
     background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
 }
+
+.left {
+  width: 85%;
+}
+
+.right {
+  width: 15%;
+}
+
 </style>
 
-<div class="ex3">
+<div class="ex11">
 
-
-
+<div class="row">
+<div class="col-md-10">
 <h2>What is Diabetes?</h2>
 <p>Diabetes is a disease that occurs when your blood glucose, also called blood sugar, is too high. 
 Blood glucose is your main source of energy and comes from the food you eat. 
@@ -36,10 +50,10 @@ Glucose then stays in your blood and doesn’t reach your cells.</p>
 <li>foot problems</li></p>
 
 
+</div>
+</div>
 
-
-
- <div class="login">
+ <div class="login" >
 	<h1>Diabetes Predictor</h1>
 
      
@@ -62,6 +76,10 @@ Glucose then stays in your blood and doesn’t reach your cells.</p>
    <br>
    {{ prediction_text }}
 
- </div>
+ 
+</div>
+
+</div>
 
 {% endblock %}
+
