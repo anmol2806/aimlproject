@@ -241,15 +241,23 @@ def predicthfa():
     final_features = [np.array(features)]
      
     prediction = model.predict(final_features)
-    print("final features",final_features)
+    
+    if prediction == 1:
+        pred = "THE PATIENT IS LIKELY TO HAVE A HEART FAILURE"
+    elif prediction == 0:
+        pred = "THE PATIENT IS NOT LIKELY TO HAVE A HEART FAILURE"
+    output = pred
+
+    '''print("final features",final_features)
     print("prediction:",prediction)
     output = round(prediction[0], 2)
-    print(output)
-
-    if output == 0:
+    print(output)'''
+    return render_template('heart_pred.html', prediction_text='{}'.format(output))
+    '''if output == 0:
         return render_template('heart_pred.html', prediction_text='THE PATIENT IS NOT LIKELY TO HAVE A HEART FAILURE')
     else:
          return render_template('heart_pred.html', prediction_text='THE PATIENT IS LIKELY TO HAVE A HEART FAILURE')
+        '''
         
 @app.route('/predict_api',methods=['POST'])
 def results():
