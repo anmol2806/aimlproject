@@ -239,7 +239,7 @@ def predicthfa():
 
     features = [float(x) for x in request.form.values()]
     final_features = [np.array(features)]
-    final_features = scaler.transform(final_features)    
+     
     prediction = model.predict(final_features)
     print("final features",final_features)
     print("prediction:",prediction)
