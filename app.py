@@ -6,9 +6,14 @@ import pickle
 import numpy as np
 import os
 import pandas as pd
+import csv
 #from sklearn.externals import joblib
 #import sklearn.external.joblib as extjoblib
 import joblib
+from sklearn.preprocessing import StandardScaler
+import diseaseprediction
+
+
 
 app = Flask(__name__)
 app.secret_key = "Secret Key"
@@ -16,7 +21,8 @@ app.secret_key = "Secret Key"
 logit_model = joblib.load('heart_disease.pkl')
 logit_model_diabetes = joblib.load('dt_model_diabetes.pkl')
 logit_model_bmi=joblib.load(open('clf.pkl','rb'))
-
+model = pickle.load(open('model.pkl', 'rb'))
+scaler = pickle.load(open('scaler.pkl', 'rb'))
 
 
 
@@ -220,7 +226,77 @@ def predict3():
 
 
 
-    
+
+
+
+@app.route('/hfa')
+def hfa():
+    return render_template("heart_pred.html")
+
+
+@app.route('/predicthfa',methods=['POST'])
+def predicthfa():
+
+    features = [float(x) for x in request.form.values()]
+    final_features = [np.array(features)]
+    final_features = scaler.transform(final_features)    
+    prediction = model.predict(final_features)
+    print("final features",final_features)
+    print("prediction:",prediction)
+    output = round(prediction[0], 2)
+    print(output)
+
+    if output == 0:
+        return render_template('heart_pred.html', prediction_text='THE PATIENT IS NOT LIKELY TO HAVE A HEART FAILURE')
+    else:
+         return render_template('heart_pred.html', prediction_text='THE PATIENT IS LIKELY TO HAVE A HEART FAILURE')
+        
+@app.route('/predict_api',methods=['POST'])
+def results():
+
+    data = request.get_json(force=True)
+    prediction = model.predict([np.array(list(data.values()))])
+
+    output = prediction[0]
+    return jsonify(output)
+
+ 
+
+with open('templates/Testing.csv', newline='') as f:
+        reader = csv.reader(f)
+        symptoms = next(reader)
+        symptoms = symptoms[:len(symptoms)-1]
+@app.route('/diseaseprediction', methods=['GET'])
+def dropdown():
+        return render_template('includes/default.html', symptoms=symptoms)
+
+@app.route('/disease_predict', methods=['POST'])
+def disease_predict():
+    selected_symptoms = []
+    if(request.form['Symptom1']!="") and (request.form['Symptom1'] not in selected_symptoms):
+        selected_symptoms.append(request.form['Symptom1'])
+    if(request.form['Symptom2']!="") and (request.form['Symptom2'] not in selected_symptoms):
+        selected_symptoms.append(request.form['Symptom2'])
+    if(request.form['Symptom3']!="") and (request.form['Symptom3'] not in selected_symptoms):
+        selected_symptoms.append(request.form['Symptom3'])
+    if(request.form['Symptom4']!="") and (request.form['Symptom4'] not in selected_symptoms):
+        selected_symptoms.append(request.form['Symptom4'])
+    if(request.form['Symptom5']!="") and (request.form['Symptom5'] not in selected_symptoms):
+        selected_symptoms.append(request.form['Symptom5'])
+
+    # disease_list = []
+    # for i in range(7):
+    #     disease = diseaseprediction.dosomething(selected_symptoms)
+    #     disease_list.append(disease)
+    # return render_template('disease_predict.html',disease_list=disease_list)
+    disease = diseaseprediction.dosomething(selected_symptoms)
+    return render_template('disease_predict.html',disease=disease,symptoms=symptoms)
+
+
+
+
+
+ 
 if __name__== '__main__':
     app.run(debug=True)
     
