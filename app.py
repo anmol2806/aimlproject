@@ -11,7 +11,7 @@ import csv
 #import sklearn.external.joblib as extjoblib
 import joblib
 from sklearn.preprocessing import StandardScaler
-import diseaseprediction
+#import diseaseprediction
 
 
 
@@ -19,10 +19,13 @@ app = Flask(__name__)
 app.secret_key = "Secret Key"
 # load the saved model file and use for prediction
 logit_model = joblib.load('heart_disease.pkl')
+
 logit_model_diabetes = joblib.load('dt_model_diabetes.pkl')
 logit_model_bmi=joblib.load(open('clf.pkl','rb'))
 model = pickle.load(open('model.pkl', 'rb'))
 scaler = pickle.load(open('scaler.pkl', 'rb'))
+
+svm_model = joblib.load('svm_model2.pkl')
 
 
 
@@ -86,19 +89,28 @@ def login():
             return render_template('login_1.html',msg=msg)
     else:
         return render_template('login_1.html')
-
+        
+        
+# ===================
+#    Flask Logout
+# ===================
 @app.route('/signin/logout')
 def logout():
 	session.pop('user', None)
 	return render_template('login_1.html')
     
-    
+# ===================
+#    Flask Logout2
+# ===================    
 @app.route('/logout')
 def logout1():
 	session.pop('user', None)
 	return render_template('login_1.html')
     
-    
+# ===================
+#   Check session 
+# is active or not
+# ===================    
 @app.route('/s')
 def student():
     if 'user' in session:  
@@ -109,8 +121,9 @@ def student():
         return render_template('login_1.html')
 
 
-
-# Signup page
+# ===================
+#  signup page
+# ===================
 @app.route('/signup/', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -133,20 +146,34 @@ def sum():
     sum = a+b
     return jsonify(sum)
 
-
+# ===================
+#   Main Page
+# ===================
 @app.route('/mainpage')
 def mainhome():
     return render_template("homepage_1.html")
 
-
+# ===================
+#   Contact Us Page
+# ===================
 @app.route('/demo')
 def contact():
     return render_template("contact_us.html")
     
+
+# ===================
+#   Backend Heart Page
+# ===================
+@app.route('/backend')    
+def data124(): 
+    return render_template("backheart.html")  
+
     
     
     
-    
+# ===================
+#   Heart Disease Page
+# ===================    
 @app.route('/heart')
 def home1():
     return render_template("indexheart.html")
@@ -179,9 +206,15 @@ def data():
 	text_file.close()
 	return render_template("heartdata.html")  
     
+@app.route('/backheartdata')    
+def data123(): 
+    return render_template("backheart.html")  
     
     
     
+# ===================
+#   Diabetes Page
+# ===================    
 @app.route('/diabetes')
 def home2():
     return render_template('index_diabetes.html')  
@@ -203,11 +236,16 @@ def predict2():
 
     return render_template('index_diabetes.html', prediction_text='{}'.format(output))
     
+@app.route('/backdiabetesdata')    
+def data125(): 
+    return render_template("backdiabetes.html")  
+    
 
 
 
-
-
+# ===================
+#  BMI Page
+# ===================
 @app.route('/bmi')
 def home3():
     return render_template("bmi_theory.html")
@@ -223,12 +261,16 @@ def predict3():
     
     return render_template('bmi_theory.html', pred=prediction)
 
+@app.route('/backendbmidata')    
+def data126(): 
+    return render_template("backbmi.html")  
 
 
 
 
-
-
+# ===================
+#   Heart Failure Page
+# ===================
 @app.route('/hfa')
 def hfa():
     return render_template("heart_pred.html")
@@ -269,39 +311,68 @@ def results():
     return jsonify(output)
 
  
+ 
+ 
 
-with open('templates/Testing.csv', newline='') as f:
-        reader = csv.reader(f)
-        symptoms = next(reader)
-        symptoms = symptoms[:len(symptoms)-1]
-@app.route('/diseaseprediction', methods=['GET'])
-def dropdown():
-        return render_template('includes/default.html', symptoms=symptoms)
+# ===================
+# Disease Prediction 
+# Page
+# ===================
+#with open('templates/Testing.csv', newline='') as f:
+#        reader = csv.reader(f)
+ #       symptoms = next(reader)
+  #      symptoms = symptoms[:len(symptoms)-1]
+#@app.route('/diseaseprediction', methods=['GET'])
+#def dropdown():
+#        return render_template('includes/default.html', symptoms=symptoms)
 
-@app.route('/disease_predict', methods=['POST'])
-def disease_predict():
-    selected_symptoms = []
-    if(request.form['Symptom1']!="") and (request.form['Symptom1'] not in selected_symptoms):
-        selected_symptoms.append(request.form['Symptom1'])
-    if(request.form['Symptom2']!="") and (request.form['Symptom2'] not in selected_symptoms):
-        selected_symptoms.append(request.form['Symptom2'])
-    if(request.form['Symptom3']!="") and (request.form['Symptom3'] not in selected_symptoms):
-        selected_symptoms.append(request.form['Symptom3'])
-    if(request.form['Symptom4']!="") and (request.form['Symptom4'] not in selected_symptoms):
-        selected_symptoms.append(request.form['Symptom4'])
-    if(request.form['Symptom5']!="") and (request.form['Symptom5'] not in selected_symptoms):
-        selected_symptoms.append(request.form['Symptom5'])
+#@app.route('/disease_predict', methods=['POST'])
+#def disease_predict():
+#    selected_symptoms = []
+#    if(request.form['Symptom1']!="") and (request.form['Symptom1'] not in selected_symptoms):
+ #       selected_symptoms.append(request.form['Symptom1'])
+#    if(request.form['Symptom2']!="") and (request.form['Symptom2'] not in selected_symptoms):
+ #       selected_symptoms.append(request.form['Symptom2'])
+  #  if(request.form['Symptom3']!="") and (request.form['Symptom3'] not in selected_symptoms):
+ #       selected_symptoms.append(request.form['Symptom3'])
+ #   if(request.form['Symptom4']!="") and (request.form['Symptom4'] not in selected_symptoms):
+#        selected_symptoms.append(request.form['Symptom4'])
+ #   if(request.form['Symptom5']!="") and (request.form['Symptom5'] not in selected_symptoms):
+#        selected_symptoms.append(request.form['Symptom5'])
 
     # disease_list = []
     # for i in range(7):
     #     disease = diseaseprediction.dosomething(selected_symptoms)
     #     disease_list.append(disease)
     # return render_template('disease_predict.html',disease_list=disease_list)
-    disease = diseaseprediction.dosomething(selected_symptoms)
-    return render_template('disease_predict.html',disease=disease,symptoms=symptoms)
+ #   disease = diseaseprediction.dosomething(selected_symptoms)
+ #   return render_template('disease_predict.html',disease=disease,symptoms=symptoms)
 
 
+# ===================
+#   Heart Disease Page
+# ===================    
+@app.route('/cardio')
+def homehea():
+    return render_template("indexheartnew.html")
+# Always at end of file !Important!
 
+@app.route('/cardio/predict',methods=['POST','GET'])
+def predictcard():
+    # receive the values send by user in three text boxes thru request object -> requesst.form.values()
+    
+    int_features = [float(x) for x in request.form.values()]
+    final_features = [np.array(int_features)]
+    print(final_features)
+       
+    prediction1=svm_model.predict(final_features)
+    if prediction1 == 1:
+        pred = "You have Heart Disease, please consult a Doctor."
+    elif prediction1 == 0:
+        pred = "You don't have Heart Disease."
+    output = pred
+   
+    return render_template('indexheartnew.html', pred= '{}'.format(output))
 
 
  
