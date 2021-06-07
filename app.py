@@ -11,7 +11,7 @@ import csv
 #import sklearn.external.joblib as extjoblib
 import joblib
 from sklearn.preprocessing import StandardScaler
-#import diseaseprediction
+
 
 
 
@@ -25,7 +25,7 @@ logit_model_bmi=joblib.load(open('clf.pkl','rb'))
 model = pickle.load(open('model.pkl', 'rb'))
 scaler = pickle.load(open('scaler.pkl', 'rb'))
 
-#svm_model = joblib.load('svm_model2.pkl')
+
 
 
 
@@ -314,65 +314,6 @@ def results():
  
  
 
-# ===================
-# Disease Prediction 
-# Page
-# ===================
-#with open('templates/Testing.csv', newline='') as f:
-#        reader = csv.reader(f)
- #       symptoms = next(reader)
-  #      symptoms = symptoms[:len(symptoms)-1]
-#@app.route('/diseaseprediction', methods=['GET'])
-#def dropdown():
-#        return render_template('includes/default.html', symptoms=symptoms)
-
-#@app.route('/disease_predict', methods=['POST'])
-#def disease_predict():
-#    selected_symptoms = []
-#    if(request.form['Symptom1']!="") and (request.form['Symptom1'] not in selected_symptoms):
- #       selected_symptoms.append(request.form['Symptom1'])
-#    if(request.form['Symptom2']!="") and (request.form['Symptom2'] not in selected_symptoms):
- #       selected_symptoms.append(request.form['Symptom2'])
-  #  if(request.form['Symptom3']!="") and (request.form['Symptom3'] not in selected_symptoms):
- #       selected_symptoms.append(request.form['Symptom3'])
- #   if(request.form['Symptom4']!="") and (request.form['Symptom4'] not in selected_symptoms):
-#        selected_symptoms.append(request.form['Symptom4'])
- #   if(request.form['Symptom5']!="") and (request.form['Symptom5'] not in selected_symptoms):
-#        selected_symptoms.append(request.form['Symptom5'])
-
-    # disease_list = []
-    # for i in range(7):
-    #     disease = diseaseprediction.dosomething(selected_symptoms)
-    #     disease_list.append(disease)
-    # return render_template('disease_predict.html',disease_list=disease_list)
- #   disease = diseaseprediction.dosomething(selected_symptoms)
- #   return render_template('disease_predict.html',disease=disease,symptoms=symptoms)
-
-
-# ===================
-#   Heart Disease Page
-# ===================    
-#@app.route('/cardio')
-#def homehea():
- #   return render_template("indexheartnew.html")
-# Always at end of file !Important!
-
-#@app.route('/cardio/predict',methods=['POST','GET'])
-#def predictcard():
-    # receive the values send by user in three text boxes thru request object -> requesst.form.values()
-    
-  #  int_features = [float(x) for x in request.form.values()]
-  #  final_features = [np.array(int_features)]
-  #  print(final_features)
-       
-  #  prediction1=svm_model.predict(final_features)
-  #  if prediction1 == 1:
-   #     pred = "You have Heart Disease, please consult a Doctor."
- #   elif prediction1 == 0:
- #       pred = "You don't have Heart Disease."
- #   output = pred
-   
- #   return render_template('indexheartnew.html', pred= '{}'.format(output))
 
 
  
