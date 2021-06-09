@@ -176,7 +176,7 @@ def data124():
 # ===================    
 @app.route('/heart')
 def home1():
-    return render_template("indexheart.html")
+    return render_template("heart.html")
 # Always at end of file !Important!
 
 @app.route('/heart/predict',methods=['POST','GET'])
@@ -194,7 +194,7 @@ def predict1():
         pred = "You don't have Heart Disease."
     output = pred
    
-    return render_template('indexheart.html', pred= '{}'.format(output))
+    return render_template('heart.html', pred= '{}'.format(output))
 
 @app.route('/heartdata')
 def data():
@@ -217,7 +217,7 @@ def data123():
 # ===================    
 @app.route('/diabetes')
 def home2():
-    return render_template('index_diabetes.html')  
+    return render_template('diabetes.html')  
 
 @app.route('/diabetes/predict',methods=['POST'])
 def predict2():
@@ -234,7 +234,7 @@ def predict2():
         pred = "You don't have Diabetes."
     output = pred
 
-    return render_template('index_diabetes.html', prediction_text='{}'.format(output))
+    return render_template('diabetes.html', prediction_text='{}'.format(output))
     
 @app.route('/backdiabetesdata')    
 def data125(): 
@@ -248,7 +248,7 @@ def data125():
 # ===================
 @app.route('/bmi')
 def home3():
-    return render_template("bmi_theory.html")
+    return render_template("bmi.html")
 
 
 @app.route('/bmi/predict',methods=['POST','GET'])
@@ -259,7 +259,7 @@ def predict3():
     final_features = [np.array(int_features)]
     prediction=logit_model_bmi.predict(final_features)
     
-    return render_template('bmi_theory.html', pred=prediction)
+    return render_template('bmi.html', pred=prediction)
 
 @app.route('/backendbmidata')    
 def data126(): 
@@ -273,7 +273,7 @@ def data126():
 # ===================
 @app.route('/hfa')
 def hfa():
-    return render_template("heart_pred.html")
+    return render_template("heart_fail.html")
 
 
 @app.route('/predicthfa',methods=['POST'])
@@ -294,7 +294,7 @@ def predicthfa():
     print("prediction:",prediction)
     output = round(prediction[0], 2)
     print(output)'''
-    return render_template('heart_pred.html', prediction_text='{}'.format(output))
+    return render_template('heart_fail.html', prediction_text='{}'.format(output))
     '''if output == 0:
         return render_template('heart_pred.html', prediction_text='THE PATIENT IS NOT LIKELY TO HAVE A HEART FAILURE')
     else:
