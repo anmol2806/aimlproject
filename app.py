@@ -18,13 +18,13 @@ from sklearn.preprocessing import StandardScaler
 app = Flask(__name__)
 app.secret_key = "Secret Key"
 # load the saved model file and use for prediction
-logit_model = joblib.load('heart_disease.pkl')
+logit_model = joblib.load('rf_model.pkl')
 
 logit_model_diabetes = joblib.load('dt_model_diabetes.pkl')
 logit_model_bmi=joblib.load(open('clf.pkl','rb'))
 model = pickle.load(open('model.pkl', 'rb'))
 scaler = pickle.load(open('scaler.pkl', 'rb'))
-
+model1=pickle.load(open('knnmodel.pkl','rb'))
 
 
 
@@ -310,7 +310,29 @@ def results():
     output = prediction[0]
     return jsonify(output)
 
- 
+
+
+@app.route('/hprob')
+def home():
+    return render_template("heart_prob.html")
+
+@app.route('/hprob/predict',methods=['POST','GET'])
+def predict():
+    # receive the values send by user in three text boxes thru request object -> requesst.form.values()
+    
+	int_features = [int(x) for x in request.form.values()]
+	final_features = [np.array(int_features)]
+	
+	#print(final_features)
+	
+	#final_features =  [[52 , 2,  168, 76, 120, 80, 1,  0,  1, 4]] 
+	#[[48,	2,	169,	82,	150,	100,	0,	0,	1, 4	]]   
+	
+	prediction=model1.predict_proba(final_features)
+	output='{0:.{1}f}'.format(prediction[0][1], 2)
+   
+	return render_template('heart_prob.html', pred='Heart Disease probability is :  {}'.format(output))
+	#return render_template('index.html', pred= final_features) 
  
  
 
