@@ -102,31 +102,29 @@ Glucose then stays in your blood and doesn’t reach your cells.</p>
      
     <form action="{{ url_for('predict2')}}"method="post">
 	<table class="table table-dark">
-		<tr><td> Pregnancies</td><td>	
+		<tr><td> <b><mark>Pregnancies</b></mark></td><td>	
 			<input class="col-xs-6" type="text" name="Pregnancies" placeholder="Pregnancies" required="required" /></td></tr>
 	
-		<tr><td> Glucose Level</td><td>
+		<tr><td><b><mark> Glucose Level</b></mark></td><td>
 			<input class="col-xs-6" type="text" name="Glucose Level" placeholder="Glucose Level (less than 140 mg/dL is normal.)" required="required" /></td></tr>
 		
-		<tr><td> Diastolic BloodPressure</td><td>
+		<tr><td> <b><mark>Diastolic BloodPressure</b></mark></td><td>
 			<input class="col-xs-6" type="text" name="BloodPressure" placeholder="Diastolic BloodPressure (Normal: Lower than 80)" required="required" /></td></tr>
 		
-		<tr><td> Insulin</td><td>
+		<tr><td> <b><mark>Insulin</b></mark></td><td>
 			<input class="col-xs-6" type="text" name="Insulin" placeholder="Insulin" required="required" /></td></tr>
 		
-        <tr><td> BMI</td><td>
+        <tr><td> <b><mark>BMI</b></mark></td><td>
 			<input class="col-xs-6" type="text" name="BMI" placeholder="BMI" required="required" /></td></tr>
         
-		<tr><td> Age</td><td>
+		<tr><td><b><mark> Age</b></mark></td><td>
 			<input class="col-xs-6" type="text" name="Age" placeholder="Age" required="required" /></td></tr>
 		</table>
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
 
-   <br>
-   <br>
-   {{ prediction_text }}
+   <h2 style="color:black;background: #1abc9c;padding: 10px;"> {{ prediction_text }}</h2>
 
  
 </div>
