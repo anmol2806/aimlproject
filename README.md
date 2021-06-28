@@ -3,7 +3,8 @@
 Machine Learning And EDA project made in FLask
 
 app link:=
-www.aimlhca.herokuapp.com
+
+http://aimlhca.herokuapp.com/
 
 
 Login Page:- <br>
